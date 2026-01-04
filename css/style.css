@@ -1,0 +1,229 @@
+/* Reset */
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Poppins',sans-serif;background:#1E1E2F;color:#fff;line-height:1.6;}
+a{text-decoration:none;color:inherit;}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+  background: #222; /* header con fondo siempre */
+  transition: all 0.3s ease;
+}
+
+header.shrink {
+  padding: 5px 30px; /* header más pequeño al hacer scroll */
+}
+
+/* Ajuste de margen superior para que las secciones no queden pegadas al header */
+section {
+  padding-top: 90px; /* suficiente para header grande */
+}
+
+/* Para que cuando el header se haga shrink el contenido suba un poco */
+header.shrink + section {
+  padding-top: 60px; /* menos padding cuando el header es más pequeño */
+}
+/* Evita que los títulos queden tapados por el header fijo */
+section {
+  scroll-margin-top: 100px; /* Ajusta este valor a la altura de tu header */
+}
+
+/* Logo */
+.logo h1{font-size:2em;display:flex;gap:5px;}
+.logo h2{font-size:1em;margin-left:2px;}
+.logo-blue{color:#00aaff;text-shadow:1px 1px 2px rgba(0,0,0,0.3);}
+.logo-rojo{color:#FF4C4C;text-shadow:1px 1px 2px rgba(0,0,0,0.3);}
+
+/* Menú */
+nav ul{list-style:none;display:flex;gap:20px;}
+nav ul li a{color:#fff;font-weight:500;transition:0.3s;}
+nav ul li a:hover{color:#FF4C4C;}
+
+/* Botón hamburguesa */
+#menu-toggle{display:none;background:#444;color:#fff;border:none;padding:5px 10px;cursor:pointer;border-radius:5px;}
+
+/* Responsive */
+@media(max-width:768px){
+  nav ul{display:none;flex-direction:column;background: rgba(34,34,34,0.95);position:absolute;top:70px;right:30px;padding:10px;border-radius:10px;}
+  nav ul.show{display:flex;}
+  #menu-toggle{display:block;}
+}
+
+/* Hero */
+.hero{height:90vh;background-size:cover;background-position:center;display:flex;justify-content:center;align-items:center;text-align:center;margin-top:70px;position:relative;}
+.hero::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:0;}
+.hero-text{position:relative;z-index:1;color:white;}
+.hero-text h1{font-size:4em;text-shadow:2px 2px 10px rgba(0,0,0,0.7);}
+.hero-categorias{font-size:1.2em;margin-top:10px;font-weight:500;}
+.hero-categorias span{padding:2px 6px;border-radius:5px;transition:0.3s;}
+.cat-anime{color:#FF4C4C;} .cat-juegos{color:#00ff99;} .cat-series{color:#00aaff;} .cat-taller{color:#ffaa00;}
+.hero-categorias span:hover{transform:scale(1.1);text-shadow:0 0 5px rgba(255,255,255,0.6);}
+
+/* Botones */
+.btn{display:inline-block;margin-top:20px;padding:12px 25px;background:#FF4C4C;color:white;border-radius:8px;font-weight:bold;transition:0.3s;}
+.btn:hover{background:#cc0000;transform:scale(1.05);}
+
+/* Catálogos */
+.secciones-container {
+  padding: 50px 20px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5em;
+  color: #FF4C4C;
+  margin-bottom: 30px;
+}
+
+.secciones {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap: 20px;
+}
+
+/* Tarjetas */
+.tarjeta {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  border-radius:10px;
+  transition:0.3s;
+  cursor:pointer;
+  text-align:center;
+  position:relative;
+}
+.tarjeta h3 {
+  background: rgba(0,0,0,0.5);
+  padding: 10px 20px;
+  border-radius:5px;
+}
+.tarjeta:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+/* Responsive */
+@media(max-width:768px){
+  .destacados-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Taller SMART PC */
+.taller {
+  padding: 80px 20px;
+  text-align: center;
+  background: linear-gradient(to bottom, rgba(30,30,47,0.85), rgba(44,44,62,0.85)),
+              url('../img/smartpc-bg.jpg') center center / cover no-repeat;
+  color: #fff;
+  border-radius: 10px;
+  min-height: 600px; /* asegura que el fondo se vea grande */
+}
+
+.taller h2 {
+  font-size: 2.5em;
+  color: #FF4C4C;
+  margin-bottom: 20px;
+}
+
+.taller-desc {
+  max-width: 700px;
+  margin: 0 auto 40px;
+  color: #B0B0B0;
+  font-size: 1.1em;
+}
+
+.taller-servicios {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto 40px;
+}
+
+.servicio-card {
+  background: rgba(44,44,62,0.8);
+  padding: 25px;
+  border-radius: 15px;
+  transition: 0.3s;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.servicio-card:hover {
+  transform: translateY(-5px);
+}
+
+.servicio-card h3 {
+  margin-bottom: 10px;
+  color: #FF4C4C;
+}
+
+.servicio-card p {
+  color: #ccc;
+  font-size: 0.95em;
+}
+
+.taller-nota {
+  margin-top: 30px;
+  color: #ffb3b3;
+  font-size: 0.95em;
+}
+
+/* Botón WhatsApp */
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #25D366;
+  color: #fff;
+  font-weight: bold;
+  padding: 15px 25px;
+  border-radius: 50px;
+  font-size: 1.1em;
+  transition: 0.3s;
+  margin-top: 20px;
+}
+
+.btn-whatsapp:hover {
+  background: #1ebe5d;
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* Quiénes Somos */
+.about{padding:80px 20px;background:linear-gradient(to bottom,#0f0f0f,#1c1c2e);text-align:center;}
+.about h2{font-size:2.5em;color:#00aaff;margin-bottom:40px;}
+.about-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;max-width:1000px;margin:0 auto;}
+.about-card{background:rgba(30,30,47,0.8);padding:25px;border-radius:15px;transition:transform 0.3s,box-shadow 0.3s;box-shadow:0 8px 15px rgba(0,0,0,0.3);}
+.about-card:hover{transform:translateY(-6px);box-shadow:0 12px 25px rgba(0,0,0,0.5);}
+.about-card h3{margin-bottom:15px;color:#00ffff;}
+.about-card p{color:#ccc;font-size:1em;line-height:1.4em;}
+.fourth-card{grid-column:1/-1;justify-self:center;} /* cuarta tarjeta centrada */
+
+/* Contacto */
+.contacto{padding:80px 20px;text-align:center;background:linear-gradient(to right,#1E1E2F,#2C2C3E);}
+.contacto-container{max-width:800px;margin:0 auto;}
+.contacto-text h2{font-size:2.5em;margin-bottom:20px;color:#FF4C4C;}
+.contacto-text p{font-size:1.2em;color:#B0B0B0;margin-bottom:30px;}
+.btn-whatsapp{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;font-weight:bold;padding:15px 25px;border-radius:50px;font-size:1.1em;transition:0.3s;}
+.btn-whatsapp img{width:30px;height:30px;}
+.btn-whatsapp:hover{background:#1ebe5d;transform:scale(1.05);box-shadow:0 8px 20px rgba(0,0,0,0.3);}
+
+/* Footer */
+footer{text-align:center;color:#B0B0B0;padding:20px;background:#222;margin-top:50px;}
+
+/* Responsive */
+@media(max-width:768px){
+  .taller-servicios{grid-template-columns:1fr;}
+  .about-cards{grid-template-columns:1fr;}
+}
